@@ -1,4 +1,4 @@
-# dead-cat-die
+# dead-cat-drop
 
 Moonshot strategy that shorts stocks that fell 10% or more the previous day. Demonstrates running a multi-country backtest to find where an anomaly works best. Uses global equities data from EDI.
 
@@ -7,19 +7,19 @@ Moonshot strategy that shorts stocks that fell 10% or more the previous day. Dem
 CLI:
 
 ```shell
-quantrocket codeload clone 'dead-cat-die'
+quantrocket codeload clone 'dead-cat-drop'
 ```
 
 Python:
 
 ```python
 from quantrocket.codeload import clone
-clone("dead-cat-die")
+clone("dead-cat-drop")
 ```
 
 ## Browse in GitHub
 
-Start here: [dead_cat_die/Introduction.ipynb](dead_cat_die/Introduction.ipynb)
+Start here: [dead_cat_drop/Introduction.ipynb](dead_cat_drop/Introduction.ipynb)
 
 ***
 
