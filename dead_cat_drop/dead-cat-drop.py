@@ -17,9 +17,9 @@ from moonshot.commission import PercentageCommission
 from quantrocket.fundamental import get_ibkr_shortable_shares_reindexed_like
 from quantrocket.master import get_securities_reindexed_like
 
-class DeadCatDie(Moonshot):
+class DeadCatDrop(Moonshot):
 
-    CODE = "dead-cat-die"
+    CODE = "dead-cat-drop"
     DB = None
     DB_FIELDS = ["Open","Close","Volume"]
     MIN_DOLLAR_VOLUME = 1000000
@@ -83,27 +83,27 @@ class DeadCatDie(Moonshot):
         return gross_returns
 
 # Canada
-class DeadCatDieCanada(DeadCatDie):
+class DeadCatDropCanada(DeadCatDrop):
 
-    CODE = "dead-cat-die-canada"
+    CODE = "dead-cat-drop-canada"
     DB = "edi-canada-1d"
     TIMEZONE = "America/Toronto"
     MIN_DOLLAR_VOLUME = 1000000.0
     LIMIT_TO_CURRENCY = "CAD"
 
 # Eurozone
-class DeadCatDieEurozone(DeadCatDie):
+class DeadCatDropEurozone(DeadCatDrop):
 
-    CODE = "dead-cat-die-eurozone"
+    CODE = "dead-cat-drop-eurozone"
     DB = ['edi-belgium-1d', 'edi-france-1d',
           'edi-germany-1d', 'edi-netherlands-1d']
     TIMEZONE = "Europe/Paris"
     MIN_DOLLAR_VOLUME = 1000000.0
     LIMIT_TO_CURRENCY = "EUR"
 
-class DeadCatDieHongkong(DeadCatDie):
+class DeadCatDropHongkong(DeadCatDrop):
 
-    CODE = "dead-cat-die-hongkong"
+    CODE = "dead-cat-drop-hongkong"
     DB = "edi-hongkong-1d"
     TIMEZONE = "Asia/Hong_Kong"
     MIN_DOLLAR_VOLUME = 8000000.0
@@ -115,36 +115,36 @@ class JapanStockTieredCommission(PercentageCommission):
     EXCHANGE_FEE_RATE = 0.00002 + 0.000004 # 0.002% Tokyo Stock Exchange fee + 0.0004% clearing fee
     MIN_COMMISSION = 80.00 # JPY
 
-class DeadCatDieJapan(DeadCatDie):
+class DeadCatDropJapan(DeadCatDrop):
 
-    CODE = "dead-cat-die-japan"
+    CODE = "dead-cat-drop-japan"
     DB = "edi-japan-1d"
     TIMEZONE = "Japan"
     MIN_DOLLAR_VOLUME = 100000000.0
     LIMIT_TO_CURRENCY = "JPY"
 
 # Sweden
-class DeadCatDieSweden(DeadCatDie):
+class DeadCatDropSweden(DeadCatDrop):
 
-    CODE = "dead-cat-die-sweden"
+    CODE = "dead-cat-drop-sweden"
     DB = "edi-sweden-1d"
     TIMEZONE = "Europe/Stockholm"
     MIN_DOLLAR_VOLUME = 8000000.0
     LIMIT_TO_CURRENCY = "SEK"
 
 # Switzerland
-class DeadCatDieSwitzerland(DeadCatDie):
+class DeadCatDropSwitzerland(DeadCatDrop):
 
-    CODE = "dead-cat-die-switzerland"
+    CODE = "dead-cat-drop-switzerland"
     DB = "edi-switzerland-1d"
     TIMEZONE = "Europe/Zurich"
     MIN_DOLLAR_VOLUME = 1000000.0
     LIMIT_TO_CURRENCY = "CHF"
 
 # UK
-class DeadCatDieUK(DeadCatDie):
+class DeadCatDropUK(DeadCatDrop):
 
-    CODE = "dead-cat-die-uk"
+    CODE = "dead-cat-drop-uk"
     DB = "edi-uk-1d"
     TIMEZONE = "Europe/London"
     MIN_DOLLAR_VOLUME = 100000000.0
