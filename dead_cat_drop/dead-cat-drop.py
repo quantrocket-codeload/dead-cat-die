@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import pandas as pd
 from moonshot import Moonshot
 from moonshot.commission import PercentageCommission
 from quantrocket.fundamental import get_ibkr_shortable_shares_reindexed_like
@@ -29,7 +30,7 @@ class DeadCatDrop(Moonshot):
     POSITIONS_CLOSED_DAILY = True # see https://www.quantrocket.com/docs/#moonshot-commissions-and-slippage-for-intraday-positions
     CONSTRAIN_SHORTABLE = False # whether to limit position sizes by shortable shares
 
-    def prices_to_signals(self, prices):
+    def prices_to_signals(self, prices: pd.DataFrame):
         closes = prices.loc["Close"]
 
         # Compute dollar volume mask
@@ -54,11 +55,11 @@ class DeadCatDrop(Moonshot):
 
         return -short_signals.astype(int)
 
-    def signals_to_target_weights(self, signals, prices):
+    def signals_to_target_weights(self, signals: pd.DataFrame, prices: pd.DataFrame):
         weights = self.allocate_fixed_weights_capped(signals, weight=self.MAX_WEIGHT_PER_POSITION)
         return weights
 
-    def limit_position_sizes(self, prices):
+    def limit_position_sizes(self, prices: pd.DataFrame):
 
         max_shares_for_shorts = None
 
@@ -70,12 +71,12 @@ class DeadCatDrop(Moonshot):
 
         return None, max_shares_for_shorts
 
-    def target_weights_to_positions(self, weights, prices):
+    def target_weights_to_positions(self, weights: pd.DataFrame, prices: pd.DataFrame):
         # enter next day
         positions = weights.shift()
         return positions
 
-    def positions_to_gross_returns(self, positions, prices):
+    def positions_to_gross_returns(self, positions: pd.DataFrame, prices: pd.DataFrame):
         closes = prices.loc["Close"]
         opens = prices.loc["Open"]
         pct_changes = (closes - opens) / opens.where(opens > 0)
